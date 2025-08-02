@@ -28,6 +28,8 @@ void buffer_cleanup(struct buffer *buffer);
 int buffer_require(struct buffer *buffer,int addc);
 int buffer_raw(struct buffer *buffer,const void *src,int srcc);
 int buffer_u8(struct buffer *buffer,uint8_t v);
+int buffer_decode_base64(struct buffer *buffer,const char *src,int srcc,const char *refname);
+int buffer_encode_base64(struct buffer *buffer,const void *src,int srcc);
 
 int file_read(void *dstpp,const char *path);
 int file_write(const char *path,const void *src,int srcc);
@@ -42,6 +44,7 @@ struct rom {
   const void *prefix,*suffix;
   int prefixc,suffixc;
   int base64;
+  void *extra;
 };
 
 /* Any input you provide to rom_decode or rom_replace must be held constant thoughout rom's life.

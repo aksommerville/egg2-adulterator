@@ -65,6 +65,13 @@ int main(int argc,char **argv) {
     return 1;
   }
   
+  if (0) {
+    fprintf(stderr,
+      "%s: Acquired ROM. %d resources, %s, %d bytes prefix, %d bytes suffix.\n",
+      g.dstpath,rom.resc,rom.base64?"base64":"binary",rom.prefixc,rom.suffixc
+    );
+  }
+  
   struct buffer incoming={0};
   if (file_read(&incoming,g.srcpath)<0) {
     fprintf(stderr,"%s: Failed to read file.\n",g.srcpath);
